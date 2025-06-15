@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create Bank Account</title>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .account-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #e68900;
+        }</style>
+</head>
+<body>
+
+    {% if get_flashed_messages(with_categories=True) %}
+    {% for category,msg in get_flashed_messages(with_categories=True) %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            <strong>{{ msg }}</strong>
+            <a type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+        </div>
+    {% endfor %}
+    {% endif %}
+
+	<form action="{{ url_for('create_bank_account', bank_name=bank.name) }}" class="account-form" method="POST">
+        <h2>Register Account in {{ bank.name }}</h2>
+        <input type="text" name="login_name" placeholder="Login Name" required>
+        <textarea name="comment" placeholder="Comment" rows="4" required></textarea>
+        <input type="password" name="code" placeholder="Security Code" required>
+        {% if not current_user.bank_accounts %} <!-- This is need to be change -->
+        <input type="number" name="deposit" placeholder="Initial Deposit" min="0" max="5" required>
+        {% endif %}
+        <button type="submit">Create Account</button>
+    </form>
+
+
+</body>
+</html>
+
+
