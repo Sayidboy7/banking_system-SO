@@ -62,3 +62,6 @@ class BankAccount(db.Model):
 
 	def __repr__(self):
 		return f'{self.id} : {self.user} & {self.login_name}-bank:{self.bank}'
+
+
+
