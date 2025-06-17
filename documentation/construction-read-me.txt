@@ -7,6 +7,8 @@
 -- Visit bank account - you can visit your bank acccount and see what is going on and if your status is blocked youre do nothing with tha account
 -- You can register and can login to the website and use that 100%
 
+-- the privacy of accounts not supported but the new version will be the stronger account privacy
+
 -- version : 1.0
 -- next update : june 18
 -- Author : Sayidboy7
