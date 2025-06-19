@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Edit Profile | {{ current_user.username }}
+{% endblock %}
+
+{% block content %}
+	<a href="{{ url_for('profile',id=user.id) }}" class="btn btn-secondary mt-3 ml-3">Back</a>
+	<div class="col-md-8 m-auto">
+		<div class="card-header">
+			<h2 class="text-center">Edit Profile</h2>
+		</div>
+		<div class="card-body">
+			<form action="{{ url_for('edit_profile',id=user.id) }}" method='POST' enctype="multipart/form-data">
+				<label>Username : </label>
+				<input class="form-control" type="text" name="username" value="{{ user.username }}">
+
+				<label>Full Name : </label>
+				<input class="form-control" type="text" name="full_name" value="{{ user.full_name }}">
+
+				<label>Email : </label>
+				<input class="form-control" type="email" name="email" value="{{ user.email }}">
+
+				<label>Bio : </label>
+				<input class="form-control" type="text" name="bio" value="{{ user.bio }}">
+
+				<label>Addres : </label>
+				<input class="form-control" type="text" name="addres" value="{{ user.adress }}">
+
+				<label>Phone number : </label>
+				<input class="form-control" type="text" name="phone" value="{{ user.phone }}">
+
+				<label>Image : </label>
+				<input class="form-control" type="file" name="image">
+
+				<button class="btn btn-primary mt-3" type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

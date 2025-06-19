@@ -1,0 +1,12 @@
+-- This website is the small version of the whole banking system this is the first 1.0 version of this website maybe to be continue
+
+-- The website have a bunch of functionalities like create bank account from you own account and can transaction the money on that balance o bank accounts
+
+-- Functionalities : Home Page - All bank on one view
+-- Bank home page - Bank interface and user bank accouts show on there are registered on this bank
+-- Visit bank account - you can visit your bank acccount and see what is going on and if your status is blocked youre do nothing with tha account
+-- You can register and can login to the website and use that 100%
+
+-- version : 1.0
+-- next update : june 18
+-- Author : Sayidboy7

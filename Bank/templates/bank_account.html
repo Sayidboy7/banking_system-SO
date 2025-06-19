@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Bank Account</title>
+    <style>
+        .account-box {
+            background: white;
+            padding: 40px;
+            margin: 25px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+            text-align: center;
+            justify-content: center;
+            width: 400px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+</head>
+<body>
+    <!-- Navbar -->
+    {% include 'components/_navbar.html' %}
+
+    {% if get_flashed_messages(with_categories=True) %}
+    {% for category,msg in get_flashed_messages(with_categories=True) %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            <strong>{{ msg }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if bank_account.status == 'active' %}
+    <div class="account-box">
+        <h2>Your Bank Account</h2>
+        <p><strong>Login Name:</strong> {{ bank_account.login_name }}</p>
+        <p><strong>Account number:</strong> {{ bank_account.account_number }}</p>
+        <p><strong>Balance:</strong> {{ bank_account.balance }} {% if bank_account.format == 'USD' %}$ ({{ bank_account.format }}){% else %} {{ bank_account.format }}{% endif %}</p>
+        <a href="{{ url_for('card_view',bank=bank.name, id=bank_account.id) }}"><button class="btn btn-outline-succes">View Card</button></a>
+        <a href="{{ url_for('transaction',bank_name=bank.name,account_id=bank_account.id) }}"><button class="btn btn-outline-primary">Do Transaction</button></a>
+    </div>
+    {% else %}
+    <div class="account-box" style="background-color: gray;">
+        <h2>Your Bank Account</h2>
+        <p><strong>Login Name:</strong> {{ bank_account.login_name }}</p>
+        <p><strong>Account number:</strong> {{ bank_account.account_number }}</p>
+        <p><strong>Status</strong> : <b>{{ bank_account.status }}</b></p>
+    </div>
+    {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
+</body>
+</html>

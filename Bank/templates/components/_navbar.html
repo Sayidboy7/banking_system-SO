@@ -1,0 +1,14 @@
+<!-- Navbar -->
+    <div class="navbar">
+        <a href="/"><div class="logo">SO Bank</div></a>
+        <div class="nav-links">
+        	{% if current_user.is_authenticated %}
+	            <a href="/">Home</a>
+                <a href="{{ url_for('profile',id=current_user.id) }}">{{ current_user }}</a>
+	            <a href="/logout">Logout</a>
+            {% else %}
+	            <a href="{{ url_for('register') }}">Register</a>
+	            <a href="{{ url_for('login') }}">Login</a>
+        	{% endif %}
+        </div>
+    </div>
