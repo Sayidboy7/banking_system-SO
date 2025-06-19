@@ -2,7 +2,7 @@
 This is the banking system little model for you 
 first version v1 of the website model but comfortable.
 
-If you need new versions contact me!
+This is the second verion of the progran
 --
 
 # Installation Guide
