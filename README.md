@@ -1,6 +1,6 @@
 # banking_system-SO
 This is the banking system little model for you 
-first version v1 of the website model but comfortable.
+second version v2 of the website model but comfortable.
 
 This is the second verion of the progran
 --
