@@ -12,7 +12,7 @@ next you need to install all related packages for this project from requirements
 Finally you can execute the app.py and use the system for you only!
 --
 
--- varsion : 1.2
+-- version : 1.2
 
 # Author Sayidboy7
 For contact : //t.me/@sayidboy7
