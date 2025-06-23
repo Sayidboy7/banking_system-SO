@@ -8,5 +8,5 @@
 -- You can register and can login to the website and use that 100%
 
 -- version : 1.2
--- next update : june 18
+-- next update : soon
 -- Author : Sayidboy7
