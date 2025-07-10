@@ -284,3 +284,41 @@ def card_view(bank, id):
     time = datetime.now()
     account_number = str(account.account_number)
     return render_template('card_view.html', account_number=account_number, time=time, account=account, type=type)
+
+
+@app.route('/api/get/account/<int:account_number>')
+def get_account_by_account_number(account_number):
+    account = BankAccount.query.filter_by(account_number=account_number).first()
+
+    if not account:
+        abort(404)
+
+    json = {
+        'login_name':account.login_name,
+        'full_name' : account.full_name,
+        'code': account.code,
+        'account_number': account.account_number,
+        'type': account.type,
+        'format' : account.format,
+        'user_id': account.id,
+    }
+
+    return json
+
+
+
+@app.route('/api/cash/<int:account_number>/<int:amount>', methods=['POST', 'GET'])
+def cash(account_number, amount):
+    account = BankAccount.query.filter_by(account_number=account_number).first()
+
+    if account.balance < amount:
+        return abort(400)
+
+    if amount < 0:
+        return abort(400)
+
+    account.balance -= amount
+
+    db.session.commit()
+
+    return 200
